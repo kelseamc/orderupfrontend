@@ -6,11 +6,10 @@ import OrderMessage from "../OrderMessage"
 function OrderConfirmation() {
 
     return (
-        <div>
-            Order Confirmation 
-            <EditForm />
-            <OrderDetails />
-            <OrderMessage />
+        <div className="confirmation">
+            <div className="edit"><EditForm /></div>
+            <div className="details"><OrderDetails /></div>
+            <div className="message"><OrderMessage /></div>
         </div>
     )
 }

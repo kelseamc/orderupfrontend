@@ -4,7 +4,7 @@ function OrderMessage() {
 
     return (
         <div>
-            ORder MEssage
+            Order Message
         </div>
     )
 }

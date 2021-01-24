@@ -1,12 +1,18 @@
 import React from "react";
 import MenuItem from "./MenuItem"
 
-function MenuContainer(){
+function MenuContainer({menuItems, onAddItem}){
     
+    const itemComponents = menuItems.map((item) => 
+    <MenuItem 
+    key={item.id} 
+    item={item}
+    onAddItem={onAddItem}
+    />)
     return(
-        <div>
-            <MenuItem />
-        </div>
+        <>
+           {itemComponents}
+        </>
     )
 }
 export default MenuContainer;
