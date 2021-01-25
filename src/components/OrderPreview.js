@@ -11,8 +11,12 @@ function OrderPreview({addedItems}) {
 
     return (
         <div>
-            Order Preview
-            {orderPreview}
+              Order Preview
+            <div>
+                <ul>
+                    {orderPreview}
+                </ul>
+            </div>
             <NavLink exact to="/orders/new">
                 <button>Go To Checkout</button>
             </NavLink>

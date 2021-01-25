@@ -3,14 +3,17 @@ import OrderPreview from "../OrderPreview"
 import Nav from "../Nav"
 import MenuContainer from "../MenuContainer"
 
-function Home({menuItems, onAddItem, addedItems}) {
-
+function Home({menuItems, onAddItem, addedItems, setCategory, category}) {
+    
 
     return (
         <div className="home">
-            <div class="nav"><Nav /></div>
-            <div class="order"><OrderPreview addedItems={addedItems}/></div>
-            <div class="menu"><MenuContainer menuItems={menuItems} onAddItem={onAddItem}/></div>
+            <div className="nav"><Nav setCategory={setCategory} category={category}/></div>
+            <div className="order"><OrderPreview addedItems={addedItems}/></div>
+            <div>
+            <h2>{category}</h2>
+            </div>
+            <div  className="menu"><MenuContainer menuItems={menuItems} onAddItem={onAddItem} /></div>
         </div>
     )
 }

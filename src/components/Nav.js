@@ -1,15 +1,26 @@
 import React from "react";
 
-function Nav(){
+function Nav({setCategory, category}){
 
+
+    function handleClick(event){
+        setCategory(event.target.value)
+    }
+    
     return(
         <div>
-            <h3>Apps</h3>
-            <h3>Salads</h3>
-            <h3>Entres</h3>
-            <h3>Pizza</h3>
-            <h3>Pasta</h3>
-            <h3>Desserts</h3>
+            <br />
+            <option value="appetizer" onClick={handleClick}>Apps</option>
+            <br />
+            <option value="salad" onClick={handleClick}>Salads</option>
+            <br />
+            <option value="entree" onClick={handleClick}>Entrees</option>
+            <br />
+            <option value="pizza" onClick={handleClick}>Pizza</option>
+            <br />
+            <option value="pasta" onClick={handleClick}>Pasta</option>
+            <br />
+            <option value="dessert" onClick={handleClick}>Desserts</option>
         </div>
     )
 }
