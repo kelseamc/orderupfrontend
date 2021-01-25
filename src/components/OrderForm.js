@@ -1,67 +1,115 @@
 import React, {useState} from "react";
 import { NavLink } from "react-router-dom";
 
-function OrderForm() {
+function OrderForm({onNewOrder, total}) {
     const [name, setName] = useState("")
     const [phone, setPhone] = useState("")
     const [card, setCard] = useState("")
     const [address, setAddress] = useState("")
     const [deliveryInstruction, setDeliveryInstruction] = useState("") /* might need to add to schema in backend*/
     
-    const formData = {name, phone, card, address, deliveryInstruction}
+    const formData = {name, phone, card, address, text: deliveryInstruction, completed: false, total: total }
     const orderId = null /* set orderId to the id of the order returned in fetch response */
 
+   
     function handleSubmit(event){
         event.preventDefault()
 
-        //send a POST request with formData in the body
-        // should get an order object back from the server in the response
+        fetch("http://localhost:3001/api/v1/orders", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(r => r.json())
+        .then((newOrder) => {
+            onNewOrder(newOrder)
+            console.log(newOrder)
+        })
+       
 
     }
     return (
         <div>
             <form onSubmit={handleSubmit}>
+            <table className="orderForm">
+                <tbody>
+            <tr>
+                <td>
                 <label>Name
+                </label>
+                </td>
+                <td>
                 <input 
                     type="text" 
                     name="name" 
                     value={name}
                     onChange={(e) => setName(e.target.value)}/>
-                </label><br></br>
+                </td>
+            </tr>
+            <tr>
+                <td>
                 <label>Phone Number
+                </label>
+                </td>
+                <td>
                     <input 
                         type="text" 
                         name="phone"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}/>
-                </label><br></br>
+                </td>
+            </tr>
+            <tr>
+                <td>
                 <label>
                     Credit Card
+                </label>
+                </td>
+                <td>
                     <input 
                         type="text" 
                         name="card"
                         value={card}
                         onChange={(e) => setCard(e.target.value)} />
-                </label><br></br>
+                </td>
+            </tr>
+            <tr>
+                <td>
                 <label>
                     Address
+                </label>
+                </td>
+                <td>
                     <input 
                     type="text" 
                     name="address" 
                     value={address}
                     onChange={(e) => setAddress(e.target.value)} />
-                </label><br></br>
+                </td>
+            </tr>
+            <tr>
+                <td>
                 <label>
                     Delivery Instructions
+                </label>
+                </td>
+                <td>
                     <input 
                     type="text-area" 
                     name="deliveryInstruction"
                     value={deliveryInstruction}
                     onChange={(e) =>setDeliveryInstruction(e.target.value)} />
-                </label>
-                <NavLink exact to="/order/1">
-                <input type="submit" value="Place Order"/>
-                </NavLink>
+                </td>
+            </tr>
+            </tbody>
+            </table>
+            <p className="submit">
+               
+                <input type="submit" value="Place Order" />
+               
+            </p>  
             </form>
         </div>
     )

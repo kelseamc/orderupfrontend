@@ -18,7 +18,7 @@ function Nav({setCategory, category}){
             <br />
             <option value="pizza" onClick={handleClick}>Pizza</option>
             <br />
-            <option value="pasta" onClick={handleClick}>Pasta</option>
+            <option value="Pasta" onClick={handleClick}>Pasta</option>
             <br />
             <option value="dessert" onClick={handleClick}>Desserts</option>
         </div>
