@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Header from "./Header"
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import OrderConfirmation from "./pages/OrderConfirmation"
 import OrderContainer from "./pages/OrderContainer"
 import Home from "./pages/Home"
@@ -15,7 +15,11 @@ function App() {
     const [orderedItems, setOrderedItems ] = useState([])
     // const [orderTotal, setOrderTotal] = useState(0)
     
-    
+    const history = useHistory()
+
+   
+
+
     useEffect(() => {
         fetch("http://localhost:3001/api/v1/menu_items")
         .then(r => r.json())
@@ -24,13 +28,14 @@ function App() {
         })
     }, [])
 
+
 /******************** CRUD handling  *****************************/
 
 function handleNewOrder(orderObj){
     setOrder(orderObj)
-    console.log(orderObj)
-
-    addedItems.forEach((item) => {
+    // console.log(orderObj)
+    let newArray = []
+    addedItems.map((item) => {
         const orderItem = {menu_item_id: item.id, order_id: orderObj.id, quantity: item.quantity }
         fetch("http://localhost:3001/api/v1/order_items", {
             method: "POST",
@@ -41,13 +46,23 @@ function handleNewOrder(orderObj){
         })
         .then(r => r.json())
         .then((orderItemDb) => {
-            setOrderedItems([...orderedItems, orderItemDb])
-
+            return newArray.push(orderItemDb)
         })
-        console.log(orderedItems)
+    
     })
+    setOrderedItems(...orderedItems, newArray)
+    history.push(`/orders/${orderObj.id}`)
+    
 }
 
+    console.log(order)
+
+    function handleDelete(){
+        console.log("deleted")
+    }
+
+
+// console.log('Ordered Items' + (orderedItems))
 
 /******************** Handling Ordered Items *****************************/
     
@@ -79,7 +94,7 @@ function handleNewOrder(orderObj){
             if (i.id === id) {
                 if(i.quantity > 1) {
                     let sub = i.quantity - 1
-                    console.log(sub)
+                    // console.log(sub)
                     i["quantity"] = sub
                     return {...i, quantity: sub}
                 } 
@@ -92,7 +107,11 @@ function handleNewOrder(orderObj){
         setAddedItems(updatedOrderItems)
     }
 
-    console.log(addedItems)
+    function onEditText(orderObj){
+        setOrder(orderObj)
+    }
+
+   
 /******************** Filtering *****************************/
 
 
@@ -133,7 +152,13 @@ function handleNewOrder(orderObj){
             />
             </Route>
             <Route exact path="/orders/:id" >
-                <OrderConfirmation />
+                <OrderConfirmation 
+                orderedItems={addedItems}
+                order={order}
+                total={total}
+                onDelete={handleDelete}
+                onEditText={onEditText}
+                />
             </Route>
            
         </Switch>

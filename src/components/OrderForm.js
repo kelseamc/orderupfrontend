@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function OrderForm({onNewOrder, total}) {
     const [name, setName] = useState("")
@@ -11,7 +11,7 @@ function OrderForm({onNewOrder, total}) {
     const formData = {name, phone, card, address, text: deliveryInstruction, completed: false, total: total }
     const orderId = null /* set orderId to the id of the order returned in fetch response */
 
-   
+
     function handleSubmit(event){
         event.preventDefault()
 
@@ -25,7 +25,8 @@ function OrderForm({onNewOrder, total}) {
         .then(r => r.json())
         .then((newOrder) => {
             onNewOrder(newOrder)
-            console.log(newOrder)
+          
+            
         })
        
 
