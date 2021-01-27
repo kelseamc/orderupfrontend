@@ -2,7 +2,7 @@ import React from "react";
 import OrderDetailItem from "./OrderDetailItem"
 import OrderMessage from "./OrderMessage"
 
-function OrderDetails({orderedItems, total, orderId, onDelete}) {
+function OrderDetails({orderedItems, total, orderId, onDelete, time}) {
 
     const orderConfirm = orderedItems.map((item, index) => 
       <OrderDetailItem
@@ -24,13 +24,16 @@ function OrderDetails({orderedItems, total, orderId, onDelete}) {
        }
 
     return (
-        <div>
+        <div className="order-details">
+            <h2>Your Order</h2>
             <table className="orderShow">
                 <tbody>
                 {orderConfirm}
                 </tbody>
             </table>
-            <h4>Total: $ {total.toFixed(2)}</h4> <button onClick={handleDelete}>Cancel Order</button>
+            <h3>Total: $ {total.toFixed(2)}</h3> 
+            {time === 0 ? "Too late for refunds :)" :
+            <button onClick={handleDelete}>Cancel Order</button>}
         </div>
     )
 }

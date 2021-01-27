@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 
-function EditForm({order, onEditText}) {
+function EditForm({order, onEditText, time}) {
 
     const [text, setText] = useState(order.text)
 
@@ -24,15 +24,16 @@ function EditForm({order, onEditText}) {
 
     return (
         <div>
-            Edit Delivery Instructions
+            <h2>Edit Delivery Instructions</h2>
             <form onSubmit={handleSubmit}>
-            <input 
+                <br />
+            <textarea
                     type="text-area" 
                     name="text"
                     value={text}
                     onChange={(e) =>setText(e.target.value)} 
-                    />
-                 <input type="submit" value="Update" />
+                    /><br></br><br></br>
+                {time === 0 ? "Too Late. We're Here :)" : <input type="submit" value="Update" /> }
                
             </form>
         </div>

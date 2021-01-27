@@ -19,13 +19,13 @@ function OrderShow({addedItems, onSubtract, onAddClick, total}) {
 
     return (
         <div>
-            Order Show
+            <h2>Your Cart</h2>
             <table className="orderShow">
                 <tbody>
                 {orderCheckout}
                 </tbody>
             </table>
-            <h4>Total: $ {total.toFixed(2)}</h4>
+            <h3>Total: $ {total.toFixed(2)}</h3>
         </div>
     )
 }

@@ -4,7 +4,14 @@ function OrderPreviewItem({item}) {
     
     return(
         <>
-        <li>{item.name}  Qt.{item.quantity}</li>
+        <tr>
+            <td>
+            {item.name} 
+            </td>
+            <td>
+             Qt.{item.quantity}
+             </td>
+             </tr>
         </>
 
     )

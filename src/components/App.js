@@ -4,6 +4,7 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import OrderConfirmation from "./pages/OrderConfirmation"
 import OrderContainer from "./pages/OrderContainer"
 import Home from "./pages/Home"
+import OrderLookUp from "./pages/OrderLookUp"
 
 
 
@@ -59,6 +60,10 @@ function handleNewOrder(orderObj){
 
     function handleDelete(){
         console.log("deleted")
+        alert("Your order has been cancelled! Please come again! (No refunds)")
+        setAddedItems([])
+        setOrder({})
+        history.push(`/`)
     }
 
 
@@ -108,6 +113,7 @@ function handleNewOrder(orderObj){
     }
 
     function onEditText(orderObj){
+        alert("Delivery Instructions updated!")
         setOrder(orderObj)
     }
 
@@ -142,6 +148,9 @@ function handleNewOrder(orderObj){
                 total={total}
                 />
             </Route>
+            <Route exact path="/orders">
+                <OrderLookUp />
+            </Route>
             <Route exact path="/orders/new" >
                 <OrderContainer 
                 addedItems={addedItems} 
@@ -158,6 +167,7 @@ function handleNewOrder(orderObj){
                 total={total}
                 onDelete={handleDelete}
                 onEditText={onEditText}
+                setAddedItems={setAddedItems}
                 />
             </Route>
            

@@ -46,9 +46,11 @@ function OrderForm({onNewOrder, total}) {
                     type="text" 
                     name="name" 
                     value={name}
+                    placeholder="Jane Doe"
                     onChange={(e) => setName(e.target.value)}/>
                 </td>
             </tr>
+       
             <tr>
                 <td>
                 <label>Phone Number
@@ -59,6 +61,7 @@ function OrderForm({onNewOrder, total}) {
                         type="text" 
                         name="phone"
                         value={phone}
+                        placeholder="(555)123-4567"
                         onChange={(e) => setPhone(e.target.value)}/>
                 </td>
             </tr>
@@ -73,6 +76,7 @@ function OrderForm({onNewOrder, total}) {
                         type="text" 
                         name="card"
                         value={card}
+                        placeholder="1234-5678-9044"
                         onChange={(e) => setCard(e.target.value)} />
                 </td>
             </tr>
@@ -87,6 +91,7 @@ function OrderForm({onNewOrder, total}) {
                     type="text" 
                     name="address" 
                     value={address}
+                    placeholder="123 Main Street"
                     onChange={(e) => setAddress(e.target.value)} />
                 </td>
             </tr>
@@ -97,9 +102,10 @@ function OrderForm({onNewOrder, total}) {
                 </label>
                 </td>
                 <td>
-                    <input 
-                    type="text-area" 
+                    <textarea
+                    type="textarea" 
                     name="deliveryInstruction"
+                    placeholder="Enter instructions here"
                     value={deliveryInstruction}
                     onChange={(e) =>setDeliveryInstruction(e.target.value)} />
                 </td>

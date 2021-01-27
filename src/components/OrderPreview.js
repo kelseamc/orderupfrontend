@@ -16,16 +16,19 @@ function OrderPreview({addedItems, total}) {
     })
 
     return (
-        <div>
-              Order Preview
-            <div>
-                <ul>
+        <div className="cart">
+              <h2 >Cart</h2>
+            <div className="total">
+                <table>
+                    <tbody>
                     {orderPreview}
-                </ul>
-                <h2>Total: ${total.toFixed(2)}</h2>
+                    </tbody>
+                </table>
+                
             </div>
+            <h2>Total: ${total.toFixed(2)}</h2>
             <NavLink exact to="/orders/new">
-                <button>Go To Checkout</button>
+                <button className="preview-button"> Go To Checkout</button>
             </NavLink>
         </div>
     )

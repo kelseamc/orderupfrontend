@@ -10,9 +10,7 @@ function Home({menuItems, onAddItem, addedItems, setCategory, category, total}) 
         <div className="home">
             <div className="nav"><Nav setCategory={setCategory} category={category}/></div>
             <div className="order"><OrderPreview addedItems={addedItems} total={total}/></div>
-            <div>
-            <h2>{category}</h2>
-            </div>
+          
             <div  className="menu"><MenuContainer menuItems={menuItems} onAddItem={onAddItem} /></div>
         </div>
     )

@@ -21,12 +21,12 @@ function OrderItem({item, onSubtract, onAddClick}) {
                     </td>
                     <td>
                     {item.quantity === 1 ? 
-                    <button onClick={handleSubtractClick}>Remove</button> : <button onClick={handleSubtractClick}>-</button> } 
+                    <button className="amountbuttons" onClick={handleSubtractClick}>Remove</button> : <button className="amountbuttons" onClick={handleSubtractClick}>-</button> } 
                   
                     <span className="quantity">
                         {item.quantity}
                     </span> 
-                    <button onClick={handleAddClick}>+</button>
+                    <button className="amountbuttons" onClick={handleAddClick}>+</button>
                     </td>
                     <td className="price">
                     <p>${price}</p> 

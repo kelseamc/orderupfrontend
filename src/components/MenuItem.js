@@ -10,9 +10,15 @@ function MenuItem({item, onAddItem}){
     
     return (
         <div className="item-tile"> 
-            <h3>{name}</h3>
+            <div className="item-tile-name">
+                <h3>{name}</h3>
+            </div>
+            <div className="item-tile-price">
             <h5>${price}</h5>
-            <p>{description}</p>
+            </div>
+            <div className="item-tile-description">
+                <p>{description}</p>
+            </div>
             <button onClick={handleAdd}>Add to Order</button>
          </div>
     )

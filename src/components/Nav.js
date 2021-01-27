@@ -9,12 +9,12 @@ function Nav({setCategory, category}){
     
     return(
         <div>
-            <option value="appetizer" onClick={handleClick}>Apps</option>
-            <option value="salad" onClick={handleClick}>Salads</option>
-            <option value="entree" onClick={handleClick}>Entrees</option>
-            <option value="pizza" onClick={handleClick}>Pizza</option>
-            <option value="Pasta" onClick={handleClick}>Pasta</option>
-            <option value="dessert" onClick={handleClick}>Desserts</option>
+            <option className={(category === "appetizer") ? "selected" : "not-selected"} value="appetizer" onClick={handleClick}>Apps</option>
+            <option className={(category === "salad") ? "selected" : "not-selected"}value="salad" onClick={handleClick}>Salads</option>
+            <option className={(category === "entree") ? "selected" : "not-selected"}value="entree" onClick={handleClick}>Entrees</option>
+            <option className={(category === "pizza") ? "selected" : "not-selected"}value="pizza" onClick={handleClick}>Pizza</option>
+            <option className={(category === "Pasta") ? "selected" : "not-selected"}value="Pasta" onClick={handleClick}>Pasta</option>
+            <option className={(category === "dessert") ? "selected" : "not-selected"}value="dessert" onClick={handleClick}>Desserts</option>
         </div>
     )
 }

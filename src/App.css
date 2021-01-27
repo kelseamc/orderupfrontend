@@ -1,6 +1,7 @@
 
 /******* App *****/
 
+
 body {
   margin: 0;
   padding: 0;
@@ -20,6 +21,29 @@ body {
     margin: 0;
     background-color:#61120e;
     text-align: center;
+  }
+
+  .header button {
+    color: white;
+    background-color:#61120e;
+    cursor:pointer;
+    padding-left: 10 px;
+    position: absolute;
+    top:0;
+    right:0;
+    border: none;
+    margin-top: 43px; 
+    margin-right: 15px;
+    border-radius: 25px;
+    outline: none;  
+  }
+  .header button:hover {
+    background-color: white;
+    color: #a5a79a;
+  }
+
+  img {
+    cursor: pointer;
   }
 
     .body { 
@@ -52,10 +76,11 @@ body {
       }
       
       .nav { 
-        grid-area: 1 / 1 / 3 / 2;
+        grid-area: 1 / 1 / 3 / 2; 
         text-align: center;
+        background-color: #a5a79a;
       }
-        .nav option {
+        .not-selected {
           background-color: #a5a79a;
           border: none;
           color: white;
@@ -63,19 +88,34 @@ body {
           font-size: 20px;
           cursor: pointer;
           outline: none;
+          font-weight: bold;
         }
         .nav option:hover {
           background-color: white;
           color: #a5a79a;
         }
 
+        .selected {
+          background-color: white;
+          border: none;
+          color: #a5a79a;
+          padding: 15px;
+          font-size: 20px;
+          cursor: pointer;
+          outline: none;
+          font-weight: bold;
+        }
+
       .order { 
         grid-area: 3 / 1 / 5 / 2; 
         background-color: #a5a79a;
+        border-top: 2px solid #61120e; 
+       
       }
+
       .menu { 
-        grid-area: 1 / 2 / 5 / 6; 
-        height: 500px; 
+        grid-area: 1 / 2 / 5 / 6;
+        height: 630px; 
         overflow-y: scroll; 
         display: flex; 
         flex-direction: row;
@@ -86,13 +126,111 @@ body {
 
         .item-tile {
           width: 25%; 
-          height: 200px; 
-          border: 2px solid #000000; 
+          height: 280px; 
+          border: 2px solid #61120e; 
+          box-shadow: 4px 4px 15px 1px rgba(165, 167, 154, 0.65);
           margin-bottom: 60px;
+          text-align: center;
+          border-radius: 25px;
+        }
+
+        .item-tile button{
+          background-color: #61120e;
+          border: none;
+          color: white;
+          padding: 15px;
+          font-size: 15px;
+          cursor:pointer;
+          outline: none;
+          border-radius: 25px;
+        }
+
+        .item-tile button:hover {
+          background-color: #a5a79a;
+          color: white;
+        }
+
+        .item-tile-name {
+          height: 80px;
+        }
+
+        .item-tile-name h3 {
+          margin-bottom: 0px;
+        }
+
+        .item-tile-price h5 {
+          margin: 0px;
+        }
+
+
+        .item-tile-description  {
+          height: 100px;
+        }
+
+        .cart {
           text-align: center;
         }
 
+        .total tbody{
+          text-align: left;
+          list-style-type: none; 
+          overflow-y: scroll;
+          height:100px;
+          display:block;
+        }
+
+
+
+        .cart button {
+          background-color: #61120e;
+          border: none;
+          color: white;
+          padding: 15px;
+          font-size: 15px;
+          cursor:pointer;
+          outline: none;
+        }
+
+        .cart button:hover {
+          background-color: white;
+          color: #a5a79a;
+        }
+
+        input[type="submit"]{
+          background-color: #61120e;
+          border: none;
+          color: white;
+          padding: 15px;
+          font-size: 15px;
+          cursor:pointer;
+          outline: none;
+        }
+
+        input[type="submit"]:hover {
+          background-color: #a5a79a;
+          color: white;
+        }
+
+        .amountbuttons {
+          background-color: #61120e;
+          border: none;
+          color: white;
+          font-size: 15px;
+          cursor:pointer;
+          outline: none;
+        }
+
+        .amountbuttons:hover {
+          background-color: #a5a79a;
+          color: white;
+        }
+
+
+
+
+
 /******* OderContainer *****/
+
 
     .container {
       display: grid;
@@ -100,14 +238,35 @@ body {
       grid-template-rows: repeat(5, 1fr);
       grid-column-gap: 0px;
       grid-row-gap: 0px;
-      border: 2px solid #000000;
+      box-shadow: 4px 4px 15px 1px rgba(165, 167, 154, 0.65);
+
       }
       
-      .details1 { grid-area: 2 / 1 / 6 / 3; border: 2px solid #000000;}
-      .form { grid-area: 2 / 3 / 6 / 5; border: 2px solid #000000;}
+        
+        .details1 { 
+          grid-area: 1 / 1 / 6 / 3; 
+          padding-right: 20px;
+          padding-top: 30px;
+        }
+        
+        .details1 h2 {
+          text-align: center;
+        }
+
+        .details1 h3 {
+          text-align: right;
+          padding-right: 30px;
+        }
+          
+          .form {
+            border-left: 2px solid #61120e;
+            grid-area: 1 / 3 / 6 / 5;
+            padding-top: 60px;
+        }
 
       .price{
         text-align: right;
+        padding-right: 30px;
       }
 
       .orderShow {
@@ -126,7 +285,14 @@ body {
       .submit {
         text-align: center;
     }
+
+    textarea {
+      height: 150px;
+      width: 300px;
+      resize: none;
+    }
 /******* OderConfimation *****/
+
       
       .confirmation {
         display: grid;
@@ -134,10 +300,95 @@ body {
         grid-template-rows: repeat(5, 1fr);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
-        border: 2px solid #000000;
+        max-height: 450px;
         }
         
-        .message { grid-area: 2 / 2 / 4 / 4; border: 2px solid #000000; }
-        .details { grid-area: 4 / 1 / 6 / 3; border: 2px solid #000000;}
-        .edit { grid-area: 4 / 3 / 6 / 5; border: 2px solid #000000;}
+        .message { 
+          grid-area: 1 / 1 / 3 / 5; 
+          text-align: center;
+          height: 100px;
+          padding-top: 30px;
+        }
+        .details { 
+          grid-area: 3 / 1 / 6 / 3;
+          text-align: center;
+          border-top: 2px outset;
+          padding-bottom: 20px;
+          position: relative;
+        }
+        .details h2 {
+          text-align: center;
+        }
 
+        .details h3 {
+          text-align: right;
+          padding-right: 30px;
+        }
+        
+        .details button {
+          background-color: #61120e;
+          border: none;
+          color: white;
+          padding: 15px;
+          font-size: 15px;
+          cursor:pointer;
+          outline: none;
+        }
+
+        .details button:hover {
+          background-color: #a5a79a;
+          color: white;
+        }
+     
+        .edit {  
+          grid-area: 3 / 3 / 6 / 5; 
+          position: relative;
+          border-left: 2px outset ;
+          border-top: 2px outset ;
+          text-align: center;
+         }
+
+         .table-border {
+           border-bottom: 2px outset;
+         }
+
+
+
+         .lookup {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(5, 1fr);
+          grid-column-gap: 0px;
+          grid-row-gap: 0px;
+          box-shadow: 4px 4px 15px 1px rgba(165, 167, 154, 0.65);
+    
+          }
+          
+
+          .lookup-form { 
+            grid-area: 1 / 1 / 6 / 3; 
+            text-align: center;
+            padding-top: 100px;
+            border-right: inset;
+          }
+
+          .order-box{
+            border-bottom: inset; 
+            
+          }
+          
+          .order-box p {
+            font-size: 12px;
+            color:grey;
+          }
+
+          .lookup-details {
+            grid-area: 1 / 3 / 6 / 5;
+            
+          }
+
+          
+          .item-table td {
+            padding: 10px;
+            width: 200px;
+          }
